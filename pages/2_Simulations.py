@@ -9,7 +9,7 @@ st.sidebar.header("Simulations")
 
 col2, col3 = st.columns([5, 15], gap = "large")
 
-with col2:
+#with col2:
     #st.image("img/ceratitis.png", width=250)
 with col3:
     st.markdown("$~$")
