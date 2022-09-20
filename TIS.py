@@ -22,6 +22,6 @@ st.markdown("La technique de l'insecte stérile est une méthode de contrôle de
 st.markdown("- La technique repose sur l'introduction dans l'environnement d'individus mâles de l'espèce cible, préalablement multipliés et stérilisés dans des biofabriques.") 
 st.markdown("- Les accouplements avec les femelles sauvages, n'entraînent pas de descendance ce qui diminue le taux de croissance de la population sauvage et permet de ramener la population de ravageurs à des niveaux acceptables.")
 
-st.markdown("La première espèce contrôlée *via* cette technique fut la lucile bouchère, une mouche parasite des mammifères, dans la seconde moitié du XXe siècle sur différents endroits du globe. Depuis, des recherches sont conduites pour adapter la technique à des vecteurs de maladie comme les  moustiques, ou des ravageurs des cultures, comme les mouches des fruits (*e.g. Ceratitis capitat* en photo ci-dessus, ou *Drosophila suzukii*).")
+st.markdown("La première espèce contrôlée *via* cette technique fut la lucilie bouchère, une mouche parasite des mammifères, dans la seconde moitié du XXe siècle sur différents endroits du globe. Depuis, des recherches sont conduites pour adapter la technique à des vecteurs de maladie comme les  moustiques, ou des ravageurs des cultures, comme les mouches des fruits (*e.g. Ceratitis capitat* en photo ci-dessus, ou *Drosophila suzukii*).")
 st.markdown("$~$")
 st.markdown("*Crédit Photo: copyright Cécile Bresch, Lucas Etienne ; améliorations Xavier Fauvergue (@INRAe)*")
