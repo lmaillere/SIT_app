@@ -24,10 +24,10 @@ with col121:
 
 col22, col23, col24 = st.columns([7, 7, 7], gap = "large")
 with col22:
-    f0 = st.slider(' Densité de femelles initiale', min_value = 0.1, max_value = K, value = 3., step=0.5, disabled = False)  
+    f0 = st.slider(' Densité de femelles sauvages initiale', min_value = 0.1, max_value = K, value = 3., step=0.1, disabled = False)  
 
 with col23:
-    m0 = st.slider(' Densité de mâles initiale', min_value = 0.1, max_value = K, value = K/2, step=0.5) 
+    m0 = st.slider(' Densité de mâles sauvages initiale', min_value = 0.1, max_value = K, value = K/2, step=0.1) 
 
 with col24:
     mS =  st.slider(' Densité de mâles stériles', min_value = .0, max_value = 1.75, value = 1., step = 0.05)  
@@ -40,7 +40,7 @@ etat0 = np.array([f0, m0])
 col32, col33 = st.columns([10, 15],gap = "large")
 with col32:
     plotChoice = st.selectbox("Que voulez vous tracer ?",
-                ("Dynamiques", "Synthèse des dynamiques", "Bifurcations / mâles stériles"), index=0)
+                ("Dynamiques", "Synthèse des dynamiques", "Plan de phase", "Bifurcations / mâles stériles"), index=0)
 
 with col33:
     if plotChoice == "Dynamiques":

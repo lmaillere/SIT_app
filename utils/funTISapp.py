@@ -47,23 +47,23 @@ def plotSim(etat0, mS, params_sim, tspan = tspan):
     fig1, ax1 = plt.subplots(figsize=(8, 6))  
 
     # tracé des simulations par rapport au temps
-    ax1.plot(tspan, int_SIT[:,0], color='C0', label='femelles')
-    ax1.plot(tspan, int_SIT[:,1], color='C1', label='mâles')
+    ax1.plot(tspan, int_SIT[:,0], color='C0', label='femelles', linewidth = 2)
+    ax1.plot(tspan, int_SIT[:,1], color='C1', label='mâles', alpha = .4)
 
     # tracé des équilibres positifs
     fRoots, mRoots = getEqs(params)
 
-    #mycolors = ['C3', 'C2']
-    #mylabels = ['équilibre instable', 'équilibre stable']
+    mycolors = ['C3', 'C2']
+    mylabels = ['éq. instable (femelles)', 'éq. stable (femelles)']
 
-    #for i in range(fRoots.size):
-        #ax1.plot(tspan, np.ones(tspan.shape)*v_roots[-1-i], color = mycolors[-1-i], label = mylabels[-1-i], linestyle = (0, (3, 7)))
+    for i in range(fRoots.size):
+        ax1.plot(tspan, np.ones(tspan.shape)*fRoots[-1-i], color = mycolors[-1-i], label = mylabels[-1-i], linestyle = (0, (3, 3)), linewidth = 2)
 
     # # tracé de l'équilibre nul
-    # col0, lab0 = 'C2', ''
-    # if v_roots.size == 1: col0, lab0 ='C3', "équilibre instable" 
-    # if v_roots.size == 0: lab0 = "équilibre stable"
-    # ax1.plot(tspan, np.ones(tspan.shape)*0, linestyle = (0, (3, 7)), color = col0, label = lab0)
+    if mS != 0:
+        ax1.plot(tspan, np.ones(tspan.shape)*0, linestyle = (0, (3, 3)), linewidth = 2, color = mycolors[1])
+    else:
+        ax1.plot(tspan, np.ones(tspan.shape)*0, linestyle = (0, (3, 3)), linewidth = 2, color = mycolors[0])
     
     # # ajout de petites imagettes
     # im1 = image.imread("img/forest.png") 
@@ -86,7 +86,7 @@ def plotSim(etat0, mS, params_sim, tspan = tspan):
     ax1.set_xlabel('temps', fontsize='12')
     ax1.set_ylabel('densités', fontsize='12')
     fig1.suptitle(r'Dynamiques de populations TIS', va='top', fontsize='14')
-    ax1.set_ylim(bottom = -.05, top=K)
+    ax1.set_ylim(bottom = -.25, top=K)
     ax1.grid()
 
     # returns the figure object
@@ -98,8 +98,10 @@ def plotSim(etat0, mS, params_sim, tspan = tspan):
 
 def getEqs(params):
     r, p, K, μ, m_s = params
-
-    fP = P([0, 1]) # définition de monôme
+    
+    R_0 = r*(1-p)/μ
+    
+    fP = P([0, 1]) # définition de monôme de polynôme
 
     # def polynôme définissant les équilibres f^* > 0
     polF = fP*(-R_0/K*fP+(R_0-1))-(1-p)/p*m_s
