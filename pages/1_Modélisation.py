@@ -32,6 +32,7 @@ with col12:
 
 with col13:
     st.markdown("#")
-    st.markdown("##### Influence des mâles stériles")
-    st.markdown(r"- en l'absence de mâles stériles ($m_s = 0$), les femelles sauvages s'accouplent avec les mâles sauvages et pondent des oeufs à une vitesse proportionnelle au NO nombre de mâles et de femelles sauvages, pondérée par la compétition entre femelles : $r f\,c(f)$")
-    st.markdown("- en présence de mâles stériles ($m_s > 0$) ")
+    st.markdown("##### Reproduction et influence des mâles stériles")
+    st.markdown("- les accouplements sont considérés non limitants et au hasard")
+    st.markdown(r"- en l'absence de mâles stériles ($m_s = 0$), les femelles sauvages pondent des oeufs à un taux $r$, pondéré par la compétition entre femelles. La vitesse de reproduction est donc : $r f\,c(f)$")
+    st.markdown(r"- en présence de mâles stériles ($m_s > 0$), seuls les acouplements avec des mâles sauvages, en proportion $\frac{m}{m+m_s}$, produisent des descendants. La vitesse de reproduction est donc : $r f \frac{m}{m+m_s}\,c(f)$")

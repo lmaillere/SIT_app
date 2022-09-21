@@ -6,3 +6,7 @@ import matplotlib.image as image
 
 # nickname for Polynomial function
 P = np.polynomial.Polynomial
+
+#######################################
+# parameters
+K = 10.
