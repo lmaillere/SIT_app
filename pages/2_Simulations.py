@@ -44,5 +44,5 @@ with col32:
 
 with col33:
     if plotChoice == "Dynamiques":
-        fig_sim = plotSim(etat0 = etat0, mS = mS, params_sim = params_sim)
+        fig_sim = plotSim(etat0 = etat0, mS = mS, params_sim = params_sim, tspan = tspan)
         st.pyplot(fig_sim)

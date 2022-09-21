@@ -10,7 +10,7 @@ P = np.polynomial.Polynomial
 #######################################
 # parameters
 r = 2.0
-p = .5
+p = .4
 K = 10.
 μ = .5
 
@@ -22,7 +22,7 @@ params_sim = np.array([r, p, K, μ])
 
 # définition d'un vecteur tspan 
 t_0 = 0             # temps initial
-t_fin = 10.0        # temps final
+t_fin = 30.0        # temps final
 pas_t = 0.01        # pas de temps de récupération des variables entre t_0 et t_fin
 tspan = np.arange(t_0, t_fin, pas_t)
 
@@ -51,13 +51,13 @@ def plotSim(etat0, mS, params_sim, tspan = tspan):
     ax1.plot(tspan, int_SIT[:,1], color='C1', label='mâles')
 
     # tracé des équilibres positifs
-    # v_roots = getEqs(gamma = gamma, T_f = T_f, params = params_sim)[0]
+    fRoots, mRoots = getEqs(params)
 
-    # mycolors = ['C3', 'C2']
-    # mylabels = ['équilibre instable', 'équilibre stable']
+    #mycolors = ['C3', 'C2']
+    #mylabels = ['équilibre instable', 'équilibre stable']
 
-    # for i in range(v_roots.size):
-    #     ax1.plot(tspan, np.ones(tspan.shape)*v_roots[-1-i], color = mycolors[-1-i], label = mylabels[-1-i], linestyle = (0, (3, 7)))
+    #for i in range(fRoots.size):
+        #ax1.plot(tspan, np.ones(tspan.shape)*v_roots[-1-i], color = mycolors[-1-i], label = mylabels[-1-i], linestyle = (0, (3, 7)))
 
     # # tracé de l'équilibre nul
     # col0, lab0 = 'C2', ''
@@ -91,3 +91,23 @@ def plotSim(etat0, mS, params_sim, tspan = tspan):
 
     # returns the figure object
     return fig1
+
+
+################################
+# calcul équilibres
+
+def getEqs(params):
+    r, p, K, μ, m_s = params
+
+    fP = P([0, 1]) # définition de monôme
+
+    # def polynôme définissant les équilibres f^* > 0
+    polF = fP*(-R_0/K*fP+(R_0-1))-(1-p)/p*m_s
+
+    # calcul des racines, recuperations des racines reelles, positives plus petites que K
+    fRoots = polF.roots()[(np.isreal(polF.roots())) * (polF.roots() < K) * (polF.roots() > 0) ] # on récupère seulement les racines entre 0 et K
+    mRoots = p/(1-p)*fRoots
+
+    eqs = np.array([fRoots, mRoots])
+
+    return eqs
