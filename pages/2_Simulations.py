@@ -27,10 +27,22 @@ with col22:
     f0 = st.slider(' Densité de femelles initiale', min_value = 0.1, max_value = K, value = 3., step=0.5, disabled = False)  
 
 with col23:
-    m0 = st.slider(' Densité de mâles initiale', min_value = 0.1, max_value = K, value = 3., step=0.5) 
+    m0 = st.slider(' Densité de mâles initiale', min_value = 0.1, max_value = K, value = K/2, step=0.5) 
 
 with col24:
     mS =  st.slider(' Densité de mâles stériles', min_value = .0, max_value = 1.75, value = 1., step = 0.05)  
 
-# encapsulation
-# params_sim = np.array([g_0, T_opt, beta, T_f, a, gamma])
+# intial condition
+etat0 = np.array([f0, m0])
+
+### plots
+
+col32, col33 = st.columns([10, 15],gap = "large")
+with col32:
+    plotChoice = st.selectbox("Que voulez vous tracer ?",
+                ("Dynamiques", "Synthèse des dynamiques", "Bifurcations / mâles stériles"), index=0)
+
+with col33:
+    if plotChoice == "Dynamiques":
+        fig_sim = plotSim(etat0 = etat0, mS = mS, params_sim = params_sim)
+        st.pyplot(fig_sim)
