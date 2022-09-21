@@ -65,23 +65,6 @@ def plotSim(etat0, mS, params_sim, tspan = tspan):
     else:
         ax1.plot(tspan, np.ones(tspan.shape)*0, linestyle = (0, (3, 3)), linewidth = 2, color = mycolors[0])
     
-    # # ajout de petites imagettes
-    # im1 = image.imread("img/forest.png") 
-    # im2 = image.imread("img/desert.png") 
-    
-    # if v_roots.size > 0:
-    #     # put a new axes where you want the image to appear
-    #     # (x, y, width, height)
-    #     imax1 = fig1.add_axes([.77, (69+384*v_roots[-1])/510+.01, 0.1, 0.1])
-    #     # remove ticks & the box from imax 
-    #     imax1.set_axis_off()
-    #     # print the logo with aspect="equal" to avoid distorting the logo
-    #     imax1.imshow(im1, aspect="equal")
-    
-    # imax2 = fig1.add_axes([.78, 0.17, 0.08, 0.08])
-    # imax2.set_axis_off()
-    # imax2.imshow(im2, aspect="equal")
-
     ax1.legend(fontsize='10', loc = 'upper right')
     ax1.set_xlabel('temps', fontsize='12')
     ax1.set_ylabel('densités', fontsize='12')
@@ -113,3 +96,36 @@ def getEqs(params):
     eqs = np.array([fRoots, mRoots])
 
     return eqs
+
+
+###############################
+# tracer toutes les dynamiques
+
+def plotSimAll(mS, params_sim, tspan = tspan):
+    params = np.append(params_sim, mS)
+
+    # conditions initiales
+    #f0Span = np.arange(.5, 5, .5)
+    #m0Span = np.arange(.5, 5, 2)
+    #[f0Span, m0Span] = np.array([np.random.uniform(0.0, 5., 10), np.random.uniform(0.0, 5., 5)]
+    #m0Span = np.random.uniform(0.0, 5., 5)
+
+    # figure
+    figS, axS = plt.subplots(figsize=(8, 6))  
+
+    etat0Bundle = np.random.rand(30,2)*3.5
+    etat0Bundle = etat0Bundle[etat0Bundle[:, 0].argsort()] # permet de trier le tableau selon la 1e coordonnée en conservant les vecteurs générés
+
+    # redéfinition du cycle des couleurs pour un dégradé de bleu
+    colorSimAll = plt.cm.Blues(np.linspace(.3, .8, etat0Bundle.shape[0]))
+    axS.set_prop_cycle(color = colorSimAll)
+
+    for i in range(etat0Bundle.shape[0]):
+        int_SIT = odeint(model_SIT, etat0Bundle[i], tspan, args=(params,), hmax=pas_t)
+        axS.plot(tspan, int_SIT[:,0])
+
+    # TODO enluminures
+    axS.grid()
+
+
+    return figS
