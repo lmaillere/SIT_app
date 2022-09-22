@@ -104,17 +104,21 @@ def getEqs(params):
 def plotSimAll(mS, params_sim, tspan = tspan):
     params = np.append(params_sim, mS)
 
-    # conditions initiales
-    #f0Span = np.arange(.5, 5, .5)
-    #m0Span = np.arange(.5, 5, 2)
-    #[f0Span, m0Span] = np.array([np.random.uniform(0.0, 5., 10), np.random.uniform(0.0, 5., 5)]
-    #m0Span = np.random.uniform(0.0, 5., 5)
-
     # figure
     figS, axS = plt.subplots(figsize=(8, 6))  
 
-    etat0Bundle = np.random.rand(30,2)*3.5
+    # équilibres positifs
+    fRoots, mRoots = getEqs(params)
+
+    # generation de conditions initiales aléatoires, intégration et plot
+    np.random.seed(12)
+    etat0Bundle = np.random.rand(30,2)*.75 * fRoots[1]
     etat0Bundle = etat0Bundle[etat0Bundle[:, 0].argsort()] # permet de trier le tableau selon la 1e coordonnée en conservant les vecteurs générés
+
+    # labels
+    labSimAll = np.full(etat0Bundle[:,0].shape, '')
+    labSimAll = np.append(labSimAll, "femelles")
+    labSimAll = np.delete(labSimAll, 0)
 
     # redéfinition du cycle des couleurs pour un dégradé de bleu
     colorSimAll = plt.cm.Blues(np.linspace(.3, .8, etat0Bundle.shape[0]))
@@ -122,10 +126,27 @@ def plotSimAll(mS, params_sim, tspan = tspan):
 
     for i in range(etat0Bundle.shape[0]):
         int_SIT = odeint(model_SIT, etat0Bundle[i], tspan, args=(params,), hmax=pas_t)
-        axS.plot(tspan, int_SIT[:,0])
+        axS.plot(tspan, int_SIT[:,0], label=labSimAll[i])
 
-    # TODO enluminures
+    # tracé des équilibres positifs
+    mycolors = ['C3', 'C2']
+    mylabels = ['éq. instable (femelles)', 'éq. stable (femelles)']
+
+    for i in range(fRoots.size):
+        axS.plot(tspan, np.ones(tspan.shape)*fRoots[-1-i], color = mycolors[-1-i], label = mylabels[-1-i], linestyle = (0, (3, 3)), linewidth = 2)
+
+    # # tracé de l'équilibre nul
+    if mS != 0:
+        axS.plot(tspan, np.ones(tspan.shape)*0, linestyle = (0, (3, 3)), linewidth = 2, color = mycolors[1])
+    else:
+        axS.plot(tspan, np.ones(tspan.shape)*0, linestyle = (0, (3, 3)), linewidth = 2, color = mycolors[0])
+
+    # enluminures
+    axS.legend(fontsize='10', loc = 'center right')
+    axS.set_xlabel('temps', fontsize='12')
+    axS.set_ylabel('densités', fontsize='12')
+    figS.suptitle(r'Dynamiques de populations TIS', va='top', fontsize='14')
+    axS.set_ylim(bottom = -.25, top = 1.1*fRoots[1])
     axS.grid()
-
 
     return figS
