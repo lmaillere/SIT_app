@@ -78,7 +78,6 @@ def plotSim(etat0, mS, params_sim, tspan = tspan):
 
 ################################
 # calcul équilibres
-
 def getEqs(params):
     r, p, K, μ, m_s = params
     
@@ -100,7 +99,7 @@ def getEqs(params):
 
 ###############################
 # tracer toutes les dynamiques
-
+@st.experimental_singleton
 def plotSimAll(mS, params_sim, tspan = tspan):
     params = np.append(params_sim, mS)
 
@@ -150,3 +149,35 @@ def plotSimAll(mS, params_sim, tspan = tspan):
     axS.grid()
 
     return figS
+
+################################
+# plot plan de phase
+@st.experimental_singleton
+def plotPlane(mS, params_sim, tspan = tspan):
+    params = np.append(params_sim, mS)
+
+    # équilibres positifs
+    fRoots, mRoots = getEqs(params)
+
+    # generation de conditions initiales aléatoires, intégration et plot
+    np.random.seed(12)
+    etat0Bundle = np.random.rand(30,2)*.75 * fRoots[1]
+    etat0Bundle = etat0Bundle[etat0Bundle[:, 0].argsort()] # permet de trier le tableau selon la 1e coordonnée en conservant les vecteurs générés
+
+    # labels
+    labSimAll = np.full(etat0Bundle[:,0].shape, '')
+    labSimAll = np.append(labSimAll, "femelles")
+    labSimAll = np.delete(labSimAll, 0)
+
+    # figure
+    figP, axP = plt.subplots(figsize=(8, 6))  
+
+    # redéfinition du cycle des couleurs pour un dégradé de bleu
+    colorSimAll = plt.cm.Blues(np.linspace(.3, .8, etat0Bundle.shape[0]))
+    axP.set_prop_cycle(color = colorSimAll)
+
+    for i in range(etat0Bundle.shape[0]):
+        int_SIT = odeint(model_SIT, etat0Bundle[i], tspan, args=(params,), hmax=pas_t)
+        axP.plot(int_SIT[:,1], int_SIT[:,0], label=labSimAll[i])
+
+    return figP

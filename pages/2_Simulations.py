@@ -49,3 +49,6 @@ with col33:
     elif plotChoice == "Synthèse des dynamiques":
         fig_all = plotSimAll(mS = mS, params_sim = params_sim)
         st.pyplot(fig_all)
+    elif plotChoice == "Plan de phase":
+        fig_plane = plotPlane(mS = mS, params_sim = params_sim)
+        st.pyplot(fig_plane)
