@@ -288,8 +288,9 @@ def plotBif(params_sim):
     # titre de la figure
     fig3.suptitle("Diagramme de bifurcations", va='top', fontsize='18')
 
-    ax3.plot(msBifInst, fPlotInst, color = "C3", label = "branche instable")
-    ax3.plot(msBifSta, fPlotSta, color = "C2", label = "branches stables")
+    ax3.plot(msBifInst, fPlotInst, color = "C3", label = "équilibre instable")
+    ax3.plot(msBifSta, fPlotSta, color = "C2", label = "équilibres stables")
+    ax3.plot(msBifInst[-1], fPlotInst[-1], 'D', markersize = 5, color = "C4", label = "bifurcation pli")
     ax3.plot(msPlot, np.zeros_like(msPlot), color = "C2")
 
     ax3.grid()
