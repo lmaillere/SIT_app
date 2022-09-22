@@ -158,7 +158,10 @@ def plotSimAll(mS, params_sim, tspan = tspan):
     axS.set_xlabel('temps', fontsize='12')
     axS.set_ylabel('densités', fontsize='12')
     figS.suptitle(r'Dynamiques de populations TIS', va='top', fontsize='18')
-    axS.set_ylim(bottom = -.25, top = 1.1*fRoots[1])
+    if fRoots.size > 1:
+        axS.set_ylim(bottom = -.25, top = 1.1*fRoots[1])
+    else:
+        axS.set_ylim(bottom = -.25, top = .5*K)
     axS.grid()
 
     return figS
@@ -237,23 +240,28 @@ def plotPlane(mS, params_sim, tspan = tspan):
         axP.plot(max(mRoots), max(fRoots), color = "C2", marker = '.', markersize = 14)
         axP.plot(min(mRoots), min(fRoots), color = "C3", marker = '.', markersize = 14)
 
-    # separatrix
-    λ, V = eig(Jac([min(fRoots), min(mRoots)], params))
+        # separatrix
+        λ, V = eig(Jac([min(fRoots), min(mRoots)], params))
 
-    tspan_sep = np.arange(0, 13, .1)
+        tspan_sep = np.arange(0, 13, .1)
 
-    initSep1 = [min(fRoots), min(mRoots)] + .01* V[:,1]
-    initSep2 = [min(fRoots), min(mRoots)] - .01* V[:,1]
+        initSep1 = [min(fRoots), min(mRoots)] + .01* V[:,1]
+        initSep2 = [min(fRoots), min(mRoots)] - .01* V[:,1]
 
-    intSep1 = odeint(model_SITinv, initSep1, tspan, args=(params,), hmax = pas_t)
-    intSep2 = odeint(model_SITinv, initSep2, tspan_sep, args=(params,), hmax = pas_t)
+        intSep1 = odeint(model_SITinv, initSep1, tspan, args=(params,), hmax = pas_t)
+        intSep2 = odeint(model_SITinv, initSep2, tspan_sep, args=(params,), hmax = pas_t)
 
-    axP.plot(intSep1[:,1], intSep1[:,0], color = "C3", label="séparatrice")
-    axP.plot(intSep2[:,1], intSep2[:,0], color = "C3")
+        axP.plot(intSep1[:,1], intSep1[:,0], color = "C3", label="séparatrice")
+        axP.plot(intSep2[:,1], intSep2[:,0], color = "C3")
 
     # enluminures
-    axP.set_ylim(bottom = -.1, top = 1.2*fRoots[1])
-    axP.set_xlim(left = -.1, right = 1.2*mRoots[1])
+    if fRoots.size > 1:
+        axP.set_ylim(bottom = -.25, top = 1.1*fRoots[1])
+        axP.set_xlim(left = -.25, right = 1.1*mRoots[1])
+    else:
+        axP.set_ylim(bottom = -.25, top = ((1-p)+.1)*K)
+        axP.set_xlim(left = -.25, right = (p+.1)*K)
+    
     axP.set_xlabel('densité de mâles', fontsize='12')
     axP.set_ylabel('densité de femelles', fontsize='12')
     figP.suptitle('Plan de phase', va='top', fontsize='18')
