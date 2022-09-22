@@ -120,7 +120,11 @@ def plotSimAll(mS, params_sim, tspan = tspan):
 
     # generation de conditions initiales aléatoires, intégration et plot
     np.random.seed(12)
-    etat0Bundle = np.random.rand(30,2)*.75 * fRoots[1]
+    if fRoots.size > 1:
+        etat0Bundle = np.random.rand(30,2)*.75 * fRoots[1]
+    else:
+        etat0Bundle = np.random.rand(30,2)*.4 * K
+
     etat0Bundle = etat0Bundle[etat0Bundle[:, 0].argsort()] # permet de trier le tableau selon la 1e coordonnée en conservant les vecteurs générés
 
     # labels
@@ -170,7 +174,11 @@ def plotPlane(mS, params_sim, tspan = tspan):
 
     # generation de conditions initiales aléatoires, intégration et plot
     np.random.seed(12)
-    etat0Bundle = np.random.rand(30,2)*.75 * fRoots[1]
+    if fRoots.size > 1:
+        etat0Bundle = np.random.rand(30,2)*.75 * fRoots[1]
+    else:
+        etat0Bundle = np.random.rand(30,2)*.4 * K
+    
     etat0Bundle = etat0Bundle[etat0Bundle[:, 0].argsort()] # permet de trier le tableau selon la 1e coordonnée en conservant les vecteurs générés
 
     # labels
