@@ -52,3 +52,6 @@ with col33:
     elif plotChoice == "Plan de phase":
         fig_plane = plotPlane(mS = mS, params_sim = params_sim)
         st.pyplot(fig_plane)
+    elif plotChoice == "Bifurcations / mâles stériles":
+        fig_bif = plotBif(params_sim = params_sim)
+        st.pyplot(fig_bif)
