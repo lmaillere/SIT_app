@@ -262,7 +262,7 @@ def plotPlane(mS, params_sim, tspan = tspan):
         axP.set_ylim(bottom = -.25, top = ((1-p)+.1)*K)
         axP.set_xlim(left = -.25, right = (p+.1)*K)
     
-    axP.set_xlabel('densité de mâles', fontsize='12')
+    00000000000000000000000000000axP.set_xlabel('densité de mâles', fontsize='12')
     axP.set_ylabel('densité de femelles', fontsize='12')
     figP.suptitle('Plan de phase', va='top', fontsize='18')
 
