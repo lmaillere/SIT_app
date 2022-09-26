@@ -24,4 +24,4 @@ st.markdown("- Les accouplements avec les femelles sauvages, n'entraînent pas d
 
 st.markdown("La première espèce contrôlée *via* cette technique fut la lucilie bouchère, une mouche parasite des mammifères, dans la seconde moitié du XXe siècle sur différents endroits du globe. Depuis, des recherches sont conduites pour adapter la technique à des vecteurs de maladie comme les  moustiques, ou des ravageurs des cultures, comme les mouches des fruits (*e.g. Ceratitis capitata* (en photo ci-dessus), ou *Drosophila suzukii*).")
 st.markdown("$~$")
-st.markdown("*Crédit Photo: copyright Cécile Bresch, Lucas Etienne ; améliorations Xavier Fauvergue (@INRAe)*")
+st.markdown("*Crédit Photo: copyright Cécile Bresch, Kevan Rastello ; améliorations Xavier Fauvergue (@INRAe)*")
