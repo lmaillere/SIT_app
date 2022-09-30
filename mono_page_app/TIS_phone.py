@@ -11,4 +11,14 @@ with col2:
     st.image("https://forgemia.inra.fr/ludovic.mailleret/figures/-/raw/master/ceratitis_capitata/ceratitis_small.png", width = 400)
     st.markdown("## Technique de l'Insecte Stérile et points de bascule")
 
-    
+with col2:
+    tab1, tab2 = st.tabs(["Modèle", "Simulations"]) 
+
+    with tab1:
+        st.markdown("### Modèle TIS")
+
+    with tab2:
+        st.markdown("### Calculs et simulations")
+
+        plotChoice = st.radio("Que voulez vous tracer ?",
+                        ("Dynamiques", "Synthèse des dynamiques", "Bifurcations / perturbations", "Bifurcations / température", "Simuler une augmentation de la température ?"), index=0)
