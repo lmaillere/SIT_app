@@ -22,7 +22,7 @@ with col2:
         st.markdown("Le modèle comporte 2 variables :")
         st.markdown("- la densité de femelles sauvages dans l'environnement $f$,")
         st.markdown("- la densité de mâles sauvages dans l'environnement $m$,")
-        st.markdown("- la densité de mâles stériles $m_s$ est considérée constante.")
+        st.markdown("- la densité de mâles stériles $m_s$ est elle considérée constante.")
         st.markdown("##### Le modèle s'écrit :")
         st.markdown(r"$$\left\{\begin{array}{l}\displaystyle \dot f = r (1-p) f \frac{m}{m+m_s} c(f) - \mu f,\\[.3cm]\displaystyle \dot m = r p f \frac{m}{m+m_s}  c(f) - \mu m.\end{array}\right.$$")
         st.markdown(r"- $r$ représente le nombre d'œufs pondus par femelle,")
