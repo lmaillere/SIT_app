@@ -26,10 +26,10 @@ with col2:
         if plotChoice == "Dynamiques":
 
 
-        if plotChoice == "Synthèse des dynamiques":
+        elif plotChoice == "Synthèse des dynamiques":
 
 
-        if plotChoice == "Plan de phase":
+        elif plotChoice == "Plan de phase":
 
 
-        if plotChoice == "Bifurcations / mâles stériles"
+        elif plotChoice == "Bifurcations / mâles stériles":
