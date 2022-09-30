@@ -13,7 +13,7 @@ with col2:
     st.image("https://forgemia.inra.fr/ludovic.mailleret/figures/-/raw/master/ceratitis_capitata/ceratitis_small.png", width=250)
 with col3:
     st.markdown("$~$")
-    st.markdown("# Technique de l'Insecte Stérile et point de basculement")
+    st.markdown("# Technique de l'Insecte Stérile et points de bascule")
 
 st.markdown("## Introduction")
 st.markdown("Cette application a pour but d'illustrer des situations ou l'on peut chercher à exploiter des points de basculement, plutôt que les éviter. Il s'agit ici de considérer une problématique de contrôle d'insectes ravageurs en agriculture, par la *Technique de l'Insecte Stérile*.")

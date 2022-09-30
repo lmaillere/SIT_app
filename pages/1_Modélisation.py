@@ -13,7 +13,7 @@ with col2:
     st.image("https://forgemia.inra.fr/ludovic.mailleret/figures/-/raw/master/ceratitis_capitata/ceratitis_small.png", width=250)
 with col3:
     st.markdown("$~$")
-    st.markdown("# Technique de l'Insecte Stérile et point de basculement")
+    st.markdown("# Technique de l'Insecte Stérile et point de bascule")
 
 col12, col13 = st.columns([11, 10],gap = "large")
 
