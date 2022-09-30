@@ -8,7 +8,7 @@ from utils.funTISapp import *
 col1, col2, col3 = st.columns([0.5, 5, 1])
 
 with col2:
-    st.image("https://forgemia.inra.fr/ludovic.mailleret/figures/-/raw/master/ceratitis_capitata/ceratitis_small.png", width = 400)
+    st.image("https://forgemia.inra.fr/ludovic.mailleret/figures/-/raw/master/ceratitis_capitata/ceratitis_small.png", width = 350)
     st.markdown("## Technique de l'Insecte Stérile et points de bascule")
 
 with col2:
@@ -21,4 +21,15 @@ with col2:
         st.markdown("### Calculs et simulations")
 
         plotChoice = st.radio("Que voulez vous tracer ?",
-                        ("Dynamiques", "Synthèse des dynamiques", "Bifurcations / perturbations", "Bifurcations / température", "Simuler une augmentation de la température ?"), index=0)
+                        ("Dynamiques", "Synthèse des dynamiques", "Plan de phase", "Bifurcations / mâles stériles"), index=0)
+
+        if plotChoice == "Dynamiques":
+
+
+        if plotChoice == "Synthèse des dynamiques":
+
+
+        if plotChoice == "Plan de phase":
+
+
+        if plotChoice == "Bifurcations / mâles stériles"
