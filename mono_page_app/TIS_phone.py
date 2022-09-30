@@ -24,12 +24,17 @@ with col2:
                         ("Dynamiques", "Synthèse des dynamiques", "Plan de phase", "Bifurcations / mâles stériles"), index=0)
 
         if plotChoice == "Dynamiques":
-
+            fig_sim = plotSim(etat0 = etat0, mS = mS, params_sim = params_sim)
+            st.pyplot(fig_sim)
 
         elif plotChoice == "Synthèse des dynamiques":
-
+            fig_all = plotSimAll(mS = mS, params_sim = params_sim)
+            st.pyplot(fig_all)
 
         elif plotChoice == "Plan de phase":
-
+            fig_plane = plotPlane(mS = mS, params_sim = params_sim)
+            st.pyplot(fig_plane)
 
         elif plotChoice == "Bifurcations / mâles stériles":
+            fig_bif = plotBif(params_sim = params_sim)
+            st.pyplot(fig_bif)
