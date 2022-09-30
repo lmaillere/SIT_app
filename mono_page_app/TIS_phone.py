@@ -17,6 +17,18 @@ with col2:
     with tab1:
         st.markdown("### Modèle TIS")
 
+        st.markdown("La technique de l'insecte stérile est une méthode de contrôle de ravageurs qui repose sur l'introduction dans l'environnement d'individus mâles de l'espèce cible, préalablement stérilisés dans des biofabriques. Les accouplements de ces mâles avec les femelles sauvages ne produisent pas de descendance, ce qui diminue de taux de croissance de la population.")
+
+        st.markdown("Le modèle comporte 2 variables :")
+        st.markdown("- la densité de femelles sauvages dans l'environnement $f$,")
+        st.markdown("- la densité de mâles sauvages dans l'environnement $m$,")
+        st.markdown("- la densité de mâles stériles $m_s$ est considérée constante.")
+        st.markdown("##### Le modèle s'écrit :")
+        st.markdown(r"$$\left\{\begin{array}{l}\displaystyle \dot f = r (1-p) f \frac{m}{m+m_s} c(f) - \mu f,\\[.3cm]\displaystyle \dot m = r p f \frac{m}{m+m_s}  c(f) - \mu m.\end{array}\right.$$")
+        st.markdown(r"- $r$ représente le nombre d'œufs pondus par femelle,")
+        st.markdown(r"- $p$ la proportion de mâles dans la descendance,")
+        st.markdown(r"- $c(f)$ la compétition entre les femelles pour l'accès aux sites de pontes,")
+        st.markdown(r"- $\mu$ le taux de mortalité de la population.")
 
 
 
