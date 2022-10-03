@@ -17,7 +17,7 @@ with col2:
     with tab1:
         st.markdown("### Modèle TIS")
 
-        st.markdown("La technique de l'insecte stérile est une méthode de contrôle de ravageurs qui repose sur l'introduction dans l'environnement d'individus mâles de l'espèce cible, préalablement stérilisés dans des biofabriques. Les accouplements de ces mâles avec les femelles sauvages ne produisent pas de descendance, ce qui diminue de taux de croissance de la population.")
+        st.markdown("La technique de l'insecte stérile est une méthode de contrôle de ravageurs qui repose sur l'introduction dans l'environnement d'individus mâles de l'espèce cible, préalablement stérilisés dans des biofabriques. Les accouplements de ces mâles avec les femelles sauvages ne produisent pas de descendance, ce qui diminue le taux de croissance de la population.")
 
         st.markdown("Le modèle comporte 2 variables :")
         st.markdown("- la densité de femelles sauvages dans l'environnement $f$,")
