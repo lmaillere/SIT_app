@@ -267,7 +267,7 @@ def plotPlane(mS, params_sim, tspan = tspan):
     figP.suptitle('Plan de phase', va='top', fontsize='18')
 
     axP.grid()
-    axP.legend(loc = 'upper left')
+    axP.legend(loc = 'upper center')
 
     return figP
 
