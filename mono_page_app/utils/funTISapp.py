@@ -46,7 +46,7 @@ def model_SITinv(etat, t, params):
     return etatdot   
 
 # fonction pour intégration et plot des dynamiques
-@st.experimental_singleton
+#@st.experimental_singleton
 def plotSim(etat0, mS, params_sim, tspan = tspan):
     params = np.append(params_sim, mS)
     
@@ -108,7 +108,7 @@ def getEqs(params):
 
 ###############################
 # tracer toutes les dynamiques
-@st.experimental_singleton
+#@st.experimental_singleton
 def plotSimAll(mS, params_sim, tspan = tspan):
     params = np.append(params_sim, mS)
 
@@ -168,7 +168,7 @@ def plotSimAll(mS, params_sim, tspan = tspan):
 
 ################################
 # plot plan de phase
-@st.experimental_singleton
+#@st.experimental_singleton
 def plotPlane(mS, params_sim, tspan = tspan):
     params = np.append(params_sim, mS)
 
